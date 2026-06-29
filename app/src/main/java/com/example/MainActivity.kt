@@ -91,11 +91,14 @@ fun ReportScreen(modifier: Modifier = Modifier) {
 
 @Composable
 fun CatalogContent() {
+    Text("EPIC MATTER · Catalog", style = MaterialTheme.typography.titleLarge, modifier = Modifier.padding(16.dp))
     val programs = listOf(
         "AcoustoBioTweeze: Contactless cell translation for synthetic tissue.",
         "ParticleConjure-Env: AI-driven assembly of environmental particles.",
         "MythicInvoke-Assembler: Combined human/AI/mythic materialization.",
-        "BubbleBurstSynthetica: Amino acid synthesis from microbubble tech."
+        "BubbleBurstSynthetica: Amino acid synthesis from microbubble tech.",
+        "Industrial Edge Sentinel: Real-time digital twin mapping.",
+        "Bio-Entanglement Engine: Coupled state vector synchronization."
     )
     LazyColumn(modifier = Modifier.fillMaxSize()) {
         items(programs) { program ->
@@ -111,12 +114,23 @@ fun SimulationContent() {
     Column(modifier = Modifier.padding(16.dp)) {
         Text("Sovereign Engine: Digital Twin", style = MaterialTheme.typography.titleMedium, color = Color.White)
         Text("Status: Syncing Bio-Entanglement Engine...", color = Color.LightGray)
+        
+        // Status Indicators
+        Row(modifier = Modifier.padding(vertical = 8.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            Surface(color = Color(0xFF1E1E1E), shape = RoundedCornerShape(8.dp)) {
+                Text("Coherence: 0.99", modifier = Modifier.padding(8.dp), color = Color.Green, fontSize = 12.sp)
+            }
+            Surface(color = Color(0xFF1E1E1E), shape = RoundedCornerShape(8.dp)) {
+                Text("Entanglement: Active", modifier = Modifier.padding(8.dp), color = Color.Cyan, fontSize = 12.sp)
+            }
+        }
+        
         Spacer(modifier = Modifier.height(16.dp))
         var frequency by remember { mutableStateOf(2.2f) }
-        Text("Frequency: ${frequency} MHz", color = Color.White)
+        Text("Frequency: ${"%.2f".format(frequency)} MHz", color = Color.White)
         Slider(value = frequency, onValueChange = { frequency = it }, valueRange = 1f..5f)
         Spacer(modifier = Modifier.height(16.dp))
-        Button(onClick = { /* Simulation logic */ }) { Text("Run Digital Twin Simulation") }
+        Button(onClick = { /* Simulation logic */ }, modifier = Modifier.fillMaxWidth()) { Text("Run Digital Twin Simulation") }
     }
 }
 
@@ -125,6 +139,9 @@ fun InvocationContent() {
     var prompt by remember { mutableStateOf("") }
     Column(modifier = Modifier.padding(16.dp)) {
         Text("Mythic Invoke-Assembler", style = MaterialTheme.typography.titleMedium, color = Color.White)
+        Surface(color = Color(0xFF1E1E1E), shape = RoundedCornerShape(8.dp), modifier = Modifier.padding(vertical = 8.dp)) {
+            Text("Sovereign Engine: READY", modifier = Modifier.padding(8.dp), color = Color.Green, fontSize = 12.sp)
+        }
         Text("Enter poetic descriptions for matter transition:", color = Color.LightGray)
         Spacer(modifier = Modifier.height(8.dp))
         OutlinedTextField(
@@ -134,6 +151,6 @@ fun InvocationContent() {
             modifier = Modifier.fillMaxWidth()
         )
         Spacer(modifier = Modifier.height(16.dp))
-        Button(onClick = { /* Invocation logic */ }) { Text("Materialize") }
+        Button(onClick = { /* Invocation logic */ }, modifier = Modifier.fillMaxWidth()) { Text("Materialize") }
     }
 }
