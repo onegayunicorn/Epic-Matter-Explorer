@@ -91,11 +91,16 @@ fun ReportScreen(modifier: Modifier = Modifier) {
 
 @Composable
 fun CatalogContent() {
-    val programs = listOf("AcoustoBioTweeze", "EMFlux-Positioner", "Liquid-Print-Matter")
+    val programs = listOf(
+        "AcoustoBioTweeze: Contactless cell translation for synthetic tissue.",
+        "ParticleConjure-Env: AI-driven assembly of environmental particles.",
+        "MythicInvoke-Assembler: Combined human/AI/mythic materialization.",
+        "BubbleBurstSynthetica: Amino acid synthesis from microbubble tech."
+    )
     LazyColumn(modifier = Modifier.fillMaxSize()) {
         items(programs) { program ->
             Card(modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp), colors = CardDefaults.cardColors(containerColor = CardWhite)) {
-                Text(text = program, modifier = Modifier.padding(16.dp), style = MaterialTheme.typography.bodyLarge)
+                Text(text = program, modifier = Modifier.padding(16.dp), style = MaterialTheme.typography.bodyMedium)
             }
         }
     }
@@ -103,12 +108,15 @@ fun CatalogContent() {
 
 @Composable
 fun SimulationContent() {
-    var frequency by remember { mutableStateOf(2.2f) }
     Column(modifier = Modifier.padding(16.dp)) {
+        Text("Sovereign Engine: Digital Twin", style = MaterialTheme.typography.titleMedium, color = Color.White)
+        Text("Status: Syncing Bio-Entanglement Engine...", color = Color.LightGray)
+        Spacer(modifier = Modifier.height(16.dp))
+        var frequency by remember { mutableStateOf(2.2f) }
         Text("Frequency: ${frequency} MHz", color = Color.White)
         Slider(value = frequency, onValueChange = { frequency = it }, valueRange = 1f..5f)
         Spacer(modifier = Modifier.height(16.dp))
-        Button(onClick = { /* Simulation logic */ }) { Text("Run Simulation") }
+        Button(onClick = { /* Simulation logic */ }) { Text("Run Digital Twin Simulation") }
     }
 }
 
@@ -116,10 +124,13 @@ fun SimulationContent() {
 fun InvocationContent() {
     var prompt by remember { mutableStateOf("") }
     Column(modifier = Modifier.padding(16.dp)) {
+        Text("Mythic Invoke-Assembler", style = MaterialTheme.typography.titleMedium, color = Color.White)
+        Text("Enter poetic descriptions for matter transition:", color = Color.LightGray)
+        Spacer(modifier = Modifier.height(8.dp))
         OutlinedTextField(
             value = prompt,
             onValueChange = { prompt = it },
-            label = { Text("Enter mythic/poetic invocation") },
+            label = { Text("Invoke...") },
             modifier = Modifier.fillMaxWidth()
         )
         Spacer(modifier = Modifier.height(16.dp))
